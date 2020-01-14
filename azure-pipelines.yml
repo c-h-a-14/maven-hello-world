@@ -12,11 +12,23 @@ pool:
 steps:
 - task: Maven@3
   inputs:
-    mavenPomFile: 'my-app/pom.xml'
-    mavenOptions: '-Xmx3072m'
-    javaHomeOption: 'JDKVersion'
-    jdkVersionOption: '1.8'
-    jdkArchitectureOption: 'x64'
-    publishJUnitResults: true
-    testResultsFiles: '**/surefire-reports/TEST-*.xml'
+    mavenPomFile: 'my-app/pom.xml'    
     goals: 'package'
+- task: CopyFiles@2
+  displayName: 'Copy Files to artifact staging directory'
+  inputs:
+    SourceFolder: '$(System.DefaultWorkingDirectory)'
+    Contents: '**/target/*.?(war|jar)'
+    TargetFolder: $(Build.ArtifactStagingDirectory)    
+
+# Publish build artifacts
+# Publish build artifacts to Azure Pipelines or a Windows file share
+- task: PublishBuildArtifacts@1
+  inputs:
+    pathtoPublish: '$(Build.ArtifactStagingDirectory)' 
+    artifactName: 'drop' 
+    publishLocation: 'Container' # Options: container, filePath
+    #targetPath: '$(System.DefaultWorkingDirectory)' # Required when publishLocation == FilePath
+    #parallel: false # Optional
+    #parallelCount: # Optional
+    #fileCopyOptions: #Optional
