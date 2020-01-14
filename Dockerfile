@@ -1,8 +1,8 @@
 FROM openjdk:8
 
-ARG DIR
+ARG MY_DIR
 
-RUN echo "dir arg is $DIR"
+RUN echo "my_dir arg is $MY_DIR"
 
 ADD $DIR/original-my-app-1.0-SNAPSHOT.jar ./original-my-app-1.0-SNAPSHOT.jar
 
