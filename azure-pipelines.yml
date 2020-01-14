@@ -37,3 +37,4 @@ steps:
   inputs:
     command: 'build'
     Dockerfile: '**/Dockerfile'
+    arguments: --build-arg MY_DIR=$(Build.ArtifactStagingDirectory)
