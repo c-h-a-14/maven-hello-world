@@ -45,14 +45,8 @@ steps:
 
 - task: Docker@2
   inputs:
-    command: 'build' #'buildAndPush'
-    #repository: $(imageRepository)
+    command: 'buildAndPush' #'build'
+    repository: 'repo1'
     Dockerfile: '**/Dockerfile'
-    #containerRegistry: $(dockerRegistryServiceConnection)
+    containerRegistry: 'DockerHubCha14'
     buildContext: '$(Build.ArtifactStagingDirectory)'
-        
-- task: PublishBuildArtifacts@1
-  inputs:
-    pathtoPublish: '$(Build.ArtifactStagingDirectory)' 
-    artifactName: 'drop1' 
-    publishLocation: 'Container' # Options: container, filePath
