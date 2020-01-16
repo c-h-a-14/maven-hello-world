@@ -56,3 +56,9 @@ steps:
     Dockerfile: '**/Dockerfile'
     containerRegistry: 'DockerHubCha14'
     buildContext: '$(Build.ArtifactStagingDirectory)'
+
+- task: Docker@2
+  displayName: Logout of Docker Hub
+  inputs:
+    command: logout
+    containerRegistry: 'DockerHubCha14'
