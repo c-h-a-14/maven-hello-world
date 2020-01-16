@@ -32,10 +32,14 @@ steps:
     #parallel: false # Optional
     #parallelCount: # Optional
     #fileCopyOptions: #Optional
+- task: DownloadPipelineArtifact@2
+  inputs:
+    buildType: 'current'
+    targetPath: '$(Pipeline.Workspace)'
 
 - task: Docker@2
   inputs:
     command: 'build'
     Dockerfile: '**/Dockerfile'
     arguments: --build-arg MY_DIR=$(Build.ArtifactStagingDirectory)
-    buildContext: '$(Build.Repository.LocalPath)'
+    buildContext: '.'
