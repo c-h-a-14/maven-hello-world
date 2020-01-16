@@ -50,6 +50,6 @@ steps:
     Dockerfile: '**/Dockerfile'
     containerRegistry: $(dockerRegistryServiceConnection)
       tags:|
-      $(tag)
+      'tag1'
     buildContext: '$(Build.ArtifactStagingDirectory)'
         
