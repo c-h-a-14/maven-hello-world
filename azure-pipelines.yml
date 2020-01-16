@@ -38,4 +38,4 @@ steps:
     command: 'build'
     Dockerfile: '**/Dockerfile'
     arguments: --build-arg MY_DIR=$(Build.ArtifactStagingDirectory)
-    buildContext: '.'
+    buildContext: '$(Build.Repository.LocalPath)'
