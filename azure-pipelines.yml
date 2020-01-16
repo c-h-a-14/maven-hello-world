@@ -45,7 +45,11 @@ steps:
 
 - task: Docker@2
   inputs:
-    command: 'build'
+    command: 'buildAndPush'#'build'
+    repository: $(imageRepository)
     Dockerfile: '**/Dockerfile'
-    arguments: --build-arg MY_DIR=$(Pipeline.Workspace)
+    containerRegistry: $(dockerRegistryServiceConnection)
+      tags:|
+      $(tag)
     buildContext: '$(Build.ArtifactStagingDirectory)'
+        
