@@ -49,7 +49,5 @@ steps:
     repository: $(imageRepository)
     Dockerfile: '**/Dockerfile'
     containerRegistry: $(dockerRegistryServiceConnection)
-      tags:|
-      'tag1'
     buildContext: '$(Build.ArtifactStagingDirectory)'
         
