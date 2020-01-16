@@ -54,7 +54,7 @@ steps:
     command: 'buildAndPush'
     Dockerfile: '**/Dockerfile'
     tags: |
-     '$(Build.BuildId)'
+     $(Build.BuildId)
     buildContext: '$(Build.ArtifactStagingDirectory)'
     
 - task: Docker@2
