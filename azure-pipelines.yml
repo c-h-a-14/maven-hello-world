@@ -44,6 +44,12 @@ steps:
       echo 'Hello world'
 
 - task: Docker@2
+  displayName: Login to Docker Hub
+  inputs:
+    command: login
+    containerRegistry: 'DockerHubCha14'
+
+- task: Docker@2
   inputs:
     command: 'buildAndPush' #'build'
     repository: 'repo1'
