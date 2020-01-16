@@ -50,12 +50,13 @@ steps:
 - task: Docker@2
   inputs:
     containerRegistry: 'DockerHubCha14'
+    repository: 'repo1'
     command: 'buildAndPush'
     Dockerfile: '**/Dockerfile'
     tags: |
      '$(Build.BuildId)'
     buildContext: '$(Build.ArtifactStagingDirectory)'
-
+    
 - task: Docker@2
   inputs:
     containerRegistry: 'DockerHubCha14'
