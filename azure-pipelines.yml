@@ -34,6 +34,15 @@ steps:
     #parallelCount: # Optional
     #fileCopyOptions: #Optional
 
+- task: Bash@3
+  inputs:
+    targetType: 'inline'
+    script: |
+      # Write your commands here
+      cd $(Build.ArtifactStagingDirectory)
+      ls
+      echo 'Hello world'
+
 - task: Docker@2
   inputs:
     command: 'build'
